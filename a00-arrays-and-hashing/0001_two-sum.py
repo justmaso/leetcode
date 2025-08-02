@@ -64,6 +64,7 @@ def run_tests():
             status = "+" if passed else f"- (got {result})"
             print(f"\t{status}{solution.__name__}")
 
+
 if __name__ == "__main__":
     run_tests()
 
