@@ -24,4 +24,3 @@ def run_tests(
             except Exception as e:
                 print(f"\t❓ {solution.__name__} raised an exception: {e}")
         print()
-
