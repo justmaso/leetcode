@@ -1,0 +1,35 @@
+#!/bin/bash
+
+# usage: ./test [problemfolder]/[problem].py
+
+# ensure proper usage
+if [ $# -ne 1 ]; then
+	echo "usage: ./test [problemfolder]/[problem.py]"
+	exit 1
+fi
+
+filepath="$1"
+
+# check file existence
+if [ ! -f "$filepath" ]; then
+	echo "[error] file not found: $filepath"
+	exit 1
+fi
+
+# check file extension
+if [[ "$filepath" != *.py ]]; then
+	echo "[error] not a python file: $filepath"
+	exit 1
+fi
+
+# check parent folder
+folder=$(dirname "$filepath")
+if [ ! -d "$folder" ]; then
+	echo "[error] folder not found: $folder"
+	exit 1
+fi
+
+module_path="${1%.py}"
+module_path="${module_path//\//.}"
+
+python3 -m "$module_path"

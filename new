@@ -1,0 +1,62 @@
+#!/bin/bash
+
+# exit on errors
+set -e
+
+# check usage
+if [ $# -ne 1 ]; then
+    echo "usage: ./new [problemfolder]/[problem]"
+    exit 1
+fi
+
+raw_path="$1"
+filepath="${raw_path}.py"
+folder=$(dirname "$filepath")
+filename=$(basename "$filepath")
+
+# create folder if needed
+if [ ! -d "$folder" ]; then
+    echo -e "\tcreating: %folder"
+    mkdir -p "$folder"
+fi
+
+# check file
+if [ -f "$filepath" ]; then
+    echo -e "\t[warning] file already exists: $filepath. overwrite? (y/n): \c"
+    read answer
+
+    case "$answer" in
+        [Yy]* ) echo -e "\t[info] overwriting $filepath";;
+        * ) echo -e "\t[info] "not overwriting $filepath; exit 0;;
+    esac
+fi
+
+# file template
+cat > "$filepath" << EOF
+from utils.bootstrap import rootify
+rootify()
+from utils.tester import GenericTestCase, run_tests
+
+
+class Solution:
+    def solution(self) -> None:
+        pass
+
+
+if __name__ == "__main__":
+    solution = Solution()
+
+    test_cases = [
+        GenericTestCase(input=(), expected=None),
+        GenericTestCase(input=(), expected=None),
+        GenericTestCase(input=(), expected=None),
+    ]
+
+    run_tests(
+        test_cases,
+        [solution.solution],
+        label=__file__
+    )
+EOF
+
+echo -e "\t[info] created: $filepath"
