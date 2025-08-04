@@ -23,7 +23,7 @@ class Solution:
             else:
                 stack.append(p)
 
-        # if the stack isn't empty, some pair(s) haven't collapsed" 
+        # if the stack isn't empty, some pair(s) haven't collapsed 
         return not stack
 
 
