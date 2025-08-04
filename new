@@ -16,7 +16,7 @@ filename=$(basename "$filepath")
 
 # create folder if needed
 if [ ! -d "$folder" ]; then
-    echo -e "\tcreating: %folder"
+    echo -e "\t[info] creating: %folder"
     mkdir -p "$folder"
 fi
 
