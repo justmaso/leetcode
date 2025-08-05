@@ -128,6 +128,18 @@ if __name__ == "__main__":
     test_cases = [
         GenericTestCase(input=([[1, 3, 5, 7], [10, 11, 16, 20], [23, 30, 34, 60]], 3), expected=True),
         GenericTestCase(input=([[1, 3, 5, 7], [10, 11, 16, 20], [23, 30, 34, 60]], 13), expected=False),
+        GenericTestCase(input=([[1]], 1), expected=True),
+        GenericTestCase(input=([[1]], 0), expected=False),
+        GenericTestCase(input=([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 5), expected=True),
+        GenericTestCase(input=([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 10), expected=False),
+        GenericTestCase(input=([[1, 3, 5]], 5), expected=True),
+        GenericTestCase(input=([[1, 3, 5]], 4), expected=False),
+        GenericTestCase(input=([[1], [3], [5]], 3), expected=True),
+        GenericTestCase(input=([[1], [3], [5]], 2), expected=False),
+        GenericTestCase(input=([[1, 3, 5, 7], [10, 11, 16, 20], [23, 30, 34, 60]], 1), expected=True),
+        GenericTestCase(input=([[1, 3, 5, 7], [10, 11, 16, 20], [23, 30, 34, 60]], 60), expected=True),
+        GenericTestCase(input=([[1, 3, 5, 7], [10, 11, 16, 20], [23, 30, 34, 60]], 0), expected=False),
+        GenericTestCase(input=([[1, 3, 5, 7], [10, 11, 16, 20], [23, 30, 34, 60]], 61), expected=False),
     ]
 
     run_tests(
