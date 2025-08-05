@@ -12,6 +12,14 @@ class Solution:
         In other words, return True if one of s1's permutations
         is a substring of s2.
         """
+
+        """
+        Optimal solution that uses an anagram-esque calculation to
+        check all substrings of s2 against permutations of s1.
+
+        Time: O(L1 + (L2 - L1)) -> O(L2)
+        Space: O(1)
+        """
         L1, L2 = len(s1), len(s2)
 
         # no permutation of s1 can exist in s2
