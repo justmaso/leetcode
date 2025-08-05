@@ -9,17 +9,16 @@ problem_folder="$1"
 [[ "${problem_folder}" != */ ]] && problem_folder="${problem_folder}/"
 
 problems_to_add=(
-    "0704_binary-search"
-    "0074_search-a-2D-matrix"
-    "0875_koko-eating-bananas"
-    "0153_find-minimum-in-rotated-sorted-array"
-    "0033_search-in-rotated-sorted-array"
-    "0981_time-based-key-value-store"
-    "0004_median-of-two-sorted-arrays"
+    "0121_best-time-to-buy-and-sell-stock"
+    "0003_longest-substring-without-repeating-characters"
+    "0424_longest-repeating-character-replacement"
+    "0567_permutation-in-string"
+    "0076_minimum-window-substring"
+    "0239_sliding-window-maximum"
 )
 
 if [ ! -x "./new" ]; then
-    echo -e "[error] './new' script not found or not executable"
+    echo -e "\t[error] './new' script not found or not executable"
     exit 1
 fi
 
