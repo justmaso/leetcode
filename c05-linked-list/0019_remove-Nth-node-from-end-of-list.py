@@ -60,7 +60,39 @@ class Solution:
         Given the head of a linked list, remove the Nth node
         from the end of the list and return the head.
         """
-        pass
+
+        """
+        Optimal solution using a boundary node to better handle edge cases.
+
+        Time: O(n)
+        Space: O(1)
+        """
+        boundary = ListNode(0, head)
+        prev = boundary
+        later = head
+
+        # shift to the Nth node from the head
+        while n > 0 and later:
+            later = later.next
+            n -= 1
+
+        # now, prev and later have N nodes between them
+
+        # shift later until it's out of bounds
+        while later:
+            prev = prev.next
+            later = later.next
+        
+        # now, prev is the node before the one to remove.
+        # later is out of bounds now, but since prev and later
+        # have N nodes between them, the node after prev is the Nth
+        # node (i.e., the one to remove)
+
+        # remove Nth node
+        prev.next = prev.next.next
+
+        # return the new head
+        return boundary.next
 
 
 if __name__ == "__main__":
