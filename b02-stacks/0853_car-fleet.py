@@ -8,7 +8,7 @@ class Solution:
         pairs = [[p, s] for p, s in zip(position, speed)]
         stack = []
 
-        # start from closest to furthest from  target
+        # loop from furthest to closest to target
         for p, s in sorted(pairs)[::-1]:
             stack.append((target - p) / s)
             
