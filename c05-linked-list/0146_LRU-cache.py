@@ -83,6 +83,41 @@ class LRUCache:
             del self.cache[lru_node.key]
 
 
+from collections import OrderedDict
+class TrivialLRUCache:
+    """
+    A trivial solution to LRU Cache that uses
+    an OrderedDict to delegate functionality to.
+    """
+    capacity: int
+    cache: OrderedDict
+
+    def __init__(self, capacity: int) -> None:
+        self.capacity = capacity
+        self.cache = OrderedDict()
+
+    def get(self, key: int) -> int:
+        # make the MRU if already exists
+        if key in self.cache:
+            self.cache.move_to_end(key)
+            return self.cache[key]
+
+        # doesn't exist
+        return -1
+
+    def put(self, key: int, value: int) -> None:
+        # make the MRU if already exists
+        if key in self.cache:
+            self.cache.move_to_end(key)
+
+        # update the value regardless
+        self.cache[key] = value
+
+        # remove the LRU when at capacity
+        if len(self.cache) > self.capacity:
+            self.cache.popitem(last=False)
+
+
 if __name__ == "__main__":
     lru_cache = LRUCache(2)
 
