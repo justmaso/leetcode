@@ -9,8 +9,20 @@ class Solution:
         return sorted(sorted(group) for group in groups)
 
     def groupAnagrams(self, strs: list[str]) -> list[list[str]]:
-        from collections import defaultdict
+        """
+        Given an array of strings strs, group the angrams
+        together. The answer can be returned in any order
+        """
 
+        """
+        Optimal solution that uses a dictionary that uses words
+        as keys (i.e., list of characters) and maps them to a list
+        containing the anagrams with those characters.
+
+        Time: O(n)
+        Space: O(n * k) where k is the length of the longest word in strs
+        """
+        from collections import defaultdict
         groups = defaultdict(list)
 
         for word in strs:
